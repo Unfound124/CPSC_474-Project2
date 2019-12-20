@@ -19,5 +19,12 @@ run-10: ${PROGRAM}
 	clear
 	mpirun -n 10 ./main
 
+run-20: ${PROGRAM}
+	clear
+	mpirun -n 20 ./main
+
+run-50: ${PROGRAM}
+	clear
+	mpirun -n 50 ./main
 clean:
 	rm ${PROGRAM}
