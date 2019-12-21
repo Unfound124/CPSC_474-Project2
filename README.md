@@ -10,7 +10,7 @@ Shortcomings:
 ```
 The election algorithm will enter an infinite loop and not terminate some times. Simply press ctrl-C to force terminate the program and run the program again. This is due to the random ID generation.
 ```
-
+LEAVE ALL THE CODE/EXECUTABLES INSIDE THE '/src' FOLDER. Docker container will automatically look inside this folder.
 
 To run the program simply open a bash terminal and run 
 
