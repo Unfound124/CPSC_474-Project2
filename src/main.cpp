@@ -1,3 +1,8 @@
+//////////////////////////////////////////////////////////////////
+// Name: Vijay Duggirala                                        //
+// CWID: 802302208                                              //
+// Project 2 - Franklin's Ring Election Algorithm simulation    //
+//////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <algorithm>
 #include <mpi.h>
@@ -13,18 +18,22 @@ int main(int argc, char **argv){
     MPI_Comm_size(MPI_COMM_WORLD, &size); // size of the world (number of total processes)
     MPI_Comm_rank(MPI_COMM_WORLD, &myRank); // Current process's unique rank
 
-    Process p(myRank, size);
-
-    while(true){
-        if(p.finishedInit()){
+    Process p(myRank, size); // create a Process p that will hold info about current process
+    // This While loop will keep the process here until it is finished generating its random ID. We do not want the process to start sending/receiving if its own ID is not generated
+    while(true)
+    {
+        if(p.finishedInit()) // if random ID was generated successfully then break out of loop and move on
+        {
             break;
         }
     }
 
     ID =  p.getID();
     cout << "Process " << p.getRank() << " initialized with ID: " << ID <<"!" << endl;
-    MPI_Barrier(MPI_COMM_WORLD);
-    // loop until leader is elected. First process to break out of loop will be elected leader
+
+    MPI_Barrier(MPI_COMM_WORLD); // wait for all processes to finish random ID generation before entering main loop
+
+    // loop until leader is elected. First process to break out of this loop will be elected leader
     while(true){
         if(p.isActive()) // If THIS process is active
         {
@@ -94,9 +103,9 @@ int main(int argc, char **argv){
     }
 
     // If THIS process breaks out of the loop then it is the leader. We will elect ourself as the leader
-    cout << "I am Process " << myRank << " and I am the elected leader and my ID was " << ID << "!" << endl;
+    cout << "I am Process " << myRank << " and I am the elected leader and my ID is " << ID << "!" << endl;
 
     MPI_Abort(MPI_COMM_WORLD, MPI_SUCCESS); // Broadcast a message to all other processes to terminate them
-    MPI_Finalize(); // Finalize and exit MPI
+    MPI_Finalize(); // Finalize MPI
     return 0;
 }

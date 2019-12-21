@@ -41,6 +41,11 @@ or
 make run-10
 ```
 
+or
+```
+make run-10
+```
+
 In general:
 ```
 mpirun -n [N] ./main
