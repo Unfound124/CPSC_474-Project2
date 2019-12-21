@@ -8,7 +8,7 @@ Franklin's leader election algorithm for Ring topology
 
 Shortcomings:
 ```
-the election algorithm will enter an infinite loop and not terminate some times. Simply press ctrl-C to force terminate the program and run the program again. This is due to the random ID generation.
+The election algorithm will enter an infinite loop and not terminate some times. Simply press ctrl-C to force terminate the program and run the program again. This is due to the random ID generation.
 ```
 
 
