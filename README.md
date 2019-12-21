@@ -6,8 +6,21 @@ Fall 2019
 
 Franklin's leader election algorithm for Ring topology
 
-To run the program simply open a bash terminal and run ./start.sh
+Shortcomings:
+```
+the election algorithm will enter an infinite loop and not terminate some times. Simply press ctrl-C to force terminate the program and run the program again. This is due to the random ID generation.
+```
 
+
+To run the program simply open a bash terminal and run 
+
+```
+./start.sh
+```
+OR
+``` 
+sudo ./start.sh
+```
 
 While inside the container, to compile the program:
 ```
